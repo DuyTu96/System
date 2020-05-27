@@ -39,6 +39,10 @@ Route::group([
     Route::resource('users', 'UserController', [
         'parameters' => ['users' => 'id']
     ]);
+
+    Route::post('/ajax/get_category', 'CategoryController@getCategory');
+    Route::post('/ajax/edit_category', 'CategoryController@editCategory');
+    Route::post('/ajax/delete_category', 'CategoryController@deleteCategory');
 });
 
 Auth::routes();

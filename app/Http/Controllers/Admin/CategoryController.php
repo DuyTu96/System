@@ -52,7 +52,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attr = [
+            'parent_id' => $request->get('parent_id'),
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+        ];
+        Category::create($attr);
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -89,14 +96,44 @@ class CategoryController extends Controller
         //
     }
 
+    public function getCategory(Request $request)
+    {
+        $id = $request->id;
+        $Category = Category::findOrFail($id);
+        $name = $Category->name;
+        $parent_id = $Category->parent_id;
+        $description = $Category->description;
+
+        return response()->json(compact(
+            'name',
+            'parent_id',
+            'description'
+        ), 200);
+    }
+
+    public function editCategory(Request $request) {
+        $category = Category::findOrFail($request->id);
+        $attr = [
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'description' => $request->description,
+        ];
+        $category->update($attr);
+
+        return response()->json($category, 200);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteCategory(Request $request)
     {
-        //
+        $category = Category::findOrFail($request->id);
+        $category->delete();
+
+        return response()->json('', 200);
     }
 }

@@ -65,6 +65,7 @@
     <script src="{{ asset('assets/admin/assets/toastr-master/toastr.js') }}"></script>
     <script src="{{ asset('assets/admin/assets/nestable/jquery.nestable.js') }}"></script>
     <script src="{{ asset('assets/admin/js/nestable.js') }}"></script>
+    <script src="{{ asset('js/jsForAdmin.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.min.js"></script>
 </body>
 

@@ -1,5 +1,5 @@
 @forelse ($categories as $categoryValue)
-<option value="{{ $categoryValue->id }}" {{ $categoryValue->id == $product->category_id ? 'selected' : '' }}>
+<option value="{{ $categoryValue->id }}" {{ isset($product) && $categoryValue->id == $product->category_id ? 'selected' : '' }}>
     @for ($i = 0; $i < $level; $i++)
         --|
     @endfor
